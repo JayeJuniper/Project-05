@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if entries.count() %}
+    {% for entry in entries %}
+            <div class="entry-list">
+                <article>
+                    <h2><a href="{{ url_for('view_entry_detail', id=entry.id) }}" class='detail'>{{ entry.title }}</a></h2>
+                    <time datetime="{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}">{{ entry.timestamp.strftime('%Y-%m-%d | %H:%M | ') }}</time>
+                    {{ entry.time_spent }}                    
+                </article>
+            </div>
+    {% endfor %}
+{% else %}
+    <p>You have no journals yet.</p>
+{% endif %}
+
+{% endblock %}
