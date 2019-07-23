@@ -4,7 +4,7 @@ Created: July 2019
 Title: Learning Journal with Flask
 Description:
 
-Create an interface for a learning journal web application. The main 
+Create an interface for a learning journal web application. The main
 (index) page lists journal entry titles and dates. Each journal entry
 title links to a detail page that displays the title, date, time spent,
 the journal entry, and resources related to the learning.
@@ -59,11 +59,11 @@ def new_entry():
     form = forms.EntryForm()
     if form.validate_on_submit():
         models.Entry.create(
-            title = form.title.data.strip(),
-            timestamp = form.timestamp.data,
-            time_spent = form.time_spent.data.strip(),
-            content = form.content.data.strip(),
-            resources = form.resources.data.strip()
+            title=form.title.data.strip(),
+            timestamp=form.timestamp.data,
+            time_spent=form.time_spent.data.strip(),
+            content=form.content.data.strip(),
+            resources=form.resources.data.strip()
         )
         print('success')
         flash("Entry posted!", "success")
@@ -106,7 +106,7 @@ def edit_entry(id):
             entry.content = form.content.data
             entry.resources = form.resources.data
             entry.save()
-            flash("Your edit has been saved!","success")
+            flash("Your edit has been saved!", "success")
             return redirect("/")
     return render_template("edit.html", form=form, entry=entry)
 
@@ -119,7 +119,7 @@ def delete_entry(id):
     except models.DoesNotExist:
         abort(404)
     else:
-        entry.delete_instance()        
+        entry.delete_instance()
         flash("Your Journal Entry Has Been Deleted!", "success")
     return redirect('/')
 
@@ -132,3 +132,4 @@ def not_found(error):
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=DEBUG, host=HOST, port=PORT)
+    
