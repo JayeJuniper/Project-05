@@ -25,3 +25,4 @@ class EntryForm(Form):
         "Resources you used",
         validators=[DataRequired()]
         )
+    
