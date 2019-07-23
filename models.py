@@ -15,10 +15,11 @@ class Entry(Model):
 
     class Meta:
         database = DATABASE
-        order_by = {'-timestamp',}
+        order_by = {'-timestamp', }
 
 
 def initialize():
     DATABASE.connect()
     DATABASE.create_tables([Entry], safe=True)
     DATABASE.close()
+    
